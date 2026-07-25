@@ -31,6 +31,19 @@
       <div class="spore-field" aria-hidden="true"></div>
     </div>
 
+    <!-- Barra delgada de contacto y redes sociales -->
+    <div class="topbar" aria-label="Contacto y redes sociales">
+      <a class="social-btn" href="https://wa.me/52XXXXXXXXXX" target="_blank" rel="noopener">
+        <span class="social-dot" aria-hidden="true"></span> WhatsApp
+      </a>
+      <a class="social-btn" href="https://facebook.com/TU_PAGINA" target="_blank" rel="noopener">
+        <span class="social-dot" aria-hidden="true"></span> Facebook
+      </a>
+      <a class="social-btn" href="https://instagram.com/TU_CUENTA" target="_blank" rel="noopener">
+        <span class="social-dot" aria-hidden="true"></span> Instagram
+      </a>
+    </div>
+
     <!-- Nombre de la página -->
     <h1 class="site-title">FungiFest <span class="accent">Morelia</span></h1>
 
@@ -75,18 +88,34 @@
 
     <section id="proyectos" class="content-section">
       <h2>Proyectos</h2>
-      <p>Próximamente: los proyectos en los que estamos trabajando.</p>
+      <!-- Tarjetas generadas dinámicamente desde Google Sheets: filas de 3 -->
+      <div id="proyectos-grid" class="cards-grid">
+        <p class="cards-empty">Cargando proyectos…</p>
+      </div>
     </section>
 
     <section id="publicaciones" class="content-section">
       <h2>Publicaciones</h2>
-      <p>Próximamente: artículos, notas y hallazgos del equipo.</p>
+      <!-- Tarjetas generadas dinámicamente desde Google Sheets: una por fila -->
+      <div id="publicaciones-list" class="cards-list">
+        <p class="cards-empty">Cargando publicaciones…</p>
+      </div>
     </section>
   </main>
+
+  <!-- Modal / submenú con la información de cada tarjeta -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-box" id="modal-box" role="dialog" aria-modal="true"></div>
+  </div>
 
   <footer class="site-footer">
     <p>FungiFest Morelia &middot; fungifestmorelia.com</p>
   </footer>
+
+  <!-- Firebase SDK (versión compat, como en Fer) -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics-compat.js"></script>
+  <!-- Si más adelante usas Firestore/Auth, agrega aquí su script compat -->
 
   <script src="script.js"></script>
 </body>

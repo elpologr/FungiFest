@@ -104,6 +104,48 @@ body {
   pointer-events: none;
 }
 
+/* Barra delgada de contacto y redes sociales */
+
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 8px 16px;
+  background: var(--cream-light);
+  border-bottom: 1px solid var(--line);
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.social-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--moss);
+  transition: background 0.2s ease;
+}
+
+.social-btn:hover {
+  background: var(--ochre);
+}
+
+.social-btn:hover .social-dot {
+  background: var(--ink);
+}
+
 /* Título */
 
 .site-title {
@@ -241,6 +283,231 @@ main {
   margin: 0;
   line-height: 1.6;
   color: rgba(36, 28, 19, 0.75);
+}
+
+/* ---------------- Tarjetas: Proyectos y Publicaciones ---------------- */
+
+.cards-empty {
+  text-align: center;
+  color: rgba(36, 28, 19, 0.55);
+  padding: 20px 0;
+}
+
+.card {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--cream-light);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--ochre);
+  box-shadow: 0 12px 26px rgba(36, 28, 19, 0.14);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--moss);
+  outline-offset: 3px;
+}
+
+.card-img {
+  display: block;
+  width: 100%;
+  height: 150px;
+  background-color: var(--moss);
+  background-size: cover;
+  background-position: center;
+}
+
+.card-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.08rem;
+  margin: 14px 16px 4px;
+}
+
+.card-summary {
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(36, 28, 19, 0.72);
+  margin: 0 16px 16px;
+}
+
+/* Proyectos: filas de 3 tarjetas */
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 860px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Publicaciones: una tarjeta por fila, horizontal */
+
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-publicacion {
+  display: flex;
+  align-items: stretch;
+}
+
+.card-publicacion .card-img {
+  width: 180px;
+  height: auto;
+  min-height: 120px;
+  flex-shrink: 0;
+}
+
+.card-publicacion .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-publicacion .card-title,
+.card-publicacion .card-summary {
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+@media (max-width: 560px) {
+  .card-publicacion {
+    flex-direction: column;
+  }
+
+  .card-publicacion .card-img {
+    width: 100%;
+    height: 150px;
+  }
+}
+
+/* ---------------- Modal / submenú ---------------- */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(36, 28, 19, 0.6);
+  z-index: 100;
+}
+
+.modal-overlay.is-open {
+  display: flex;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  max-height: 86vh;
+  overflow-y: auto;
+  background: var(--cream-light);
+  border-radius: var(--radius);
+  padding: 28px;
+  animation: modal-in 0.2s ease;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+
+.modal-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--ochre);
+  padding: 3px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.modal-box h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin: 0 0 10px;
+}
+
+.modal-box p {
+  line-height: 1.6;
+  color: rgba(36, 28, 19, 0.8);
+  margin: 0 0 16px;
+  white-space: pre-line;
+}
+
+.modal-link {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--moss);
+  padding: 10px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: var(--ochre);
 }
 
 /* ---------------- Footer ---------------- */
