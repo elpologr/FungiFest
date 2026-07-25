@@ -34,15 +34,15 @@ const SHEET_NAME = 'Hoja 1';
 const OMITIR_ENCABEZADO = true;
 
 // Índices de columna (A=0, B=1, C=2 ...). Ajusta si tu hoja usa otro orden.
-// Tu hoja "FungiFest" tiene: A="Nombre", B="Tipo", C="imgbb" (link de imagen).
-// D-F quedan listas para cuando agregues Resumen, Contenido y Enlace.
+// Tu hoja "FungiFest" tiene: A="Nombre", B="Tipo", C="imgbb" (link de imagen),
+// D="descripcion". E-F quedan listas para Contenido y Enlace.
 const COLUMNAS = {
-  TITULO: 0,       // A
-  TIPO: 1,         // B — debe decir "Proyecto" o "Publicación"
-  IMAGEN: 2,        // C — link de imgbb
-  RESUMEN: 3,       // D
-  CONTENIDO: 4,     // E
-  ENLACE: 5         // F
+  TITULO: 0,        // A
+  TIPO: 1,          // B — debe decir "Proyecto" o "Publicación"
+  IMAGEN: 2,          // C — link de imgbb
+  DESCRIPCION: 3,     // D
+  CONTENIDO: 4,       // E
+  ENLACE: 5           // F
 };
 
 function normalizarTexto(texto) {
@@ -77,7 +77,7 @@ async function obtenerFilasDeLaHoja() {
     return {
       titulo: celda(COLUMNAS.TITULO),
       tipo: celda(COLUMNAS.TIPO),
-      resumen: celda(COLUMNAS.RESUMEN),
+      descripcion: celda(COLUMNAS.DESCRIPCION),
       contenido: celda(COLUMNAS.CONTENIDO),
       imagen: celda(COLUMNAS.IMAGEN),
       enlace: celda(COLUMNAS.ENLACE)
@@ -126,7 +126,7 @@ function crearTarjetaProyecto(item) {
   tarjeta.innerHTML = `
     ${item.imagen ? `<span class="card-img" style="background-image:url('${item.imagen}')"></span>` : ''}
     <span class="card-title">${escaparHTML(item.titulo)}</span>
-    ${item.resumen ? `<span class="card-summary">${escaparHTML(item.resumen)}</span>` : ''}
+    ${item.descripcion ? `<span class="card-summary">${escaparHTML(item.descripcion)}</span>` : ''}
   `;
   tarjeta.addEventListener('click', () => abrirModal(item));
   return tarjeta;
@@ -140,7 +140,7 @@ function crearTarjetaPublicacion(item) {
     ${item.imagen ? `<span class="card-img" style="background-image:url('${item.imagen}')"></span>` : ''}
     <span class="card-body">
       <span class="card-title">${escaparHTML(item.titulo)}</span>
-      ${item.resumen ? `<span class="card-summary">${escaparHTML(item.resumen)}</span>` : ''}
+      ${item.descripcion ? `<span class="card-summary">${escaparHTML(item.descripcion)}</span>` : ''}
     </span>
   `;
   tarjeta.addEventListener('click', () => abrirModal(item));
@@ -156,7 +156,7 @@ function abrirModal(item) {
     ${item.imagen ? `<img class="modal-img" src="${item.imagen}" alt="${escaparHTML(item.titulo)}">` : ''}
     <span class="modal-tag">${escaparHTML(item.tipo)}</span>
     <h3>${escaparHTML(item.titulo)}</h3>
-    ${(item.contenido || item.resumen) ? `<p>${escaparHTML(item.contenido || item.resumen)}</p>` : ''}
+    ${(item.descripcion || item.contenido) ? `<p>${escaparHTML(item.descripcion || item.contenido)}</p>` : ''}
     ${item.enlace ? `<a class="modal-link" href="${item.enlace}" target="_blank" rel="noopener">Ver más</a>` : ''}
   `;
   modalOverlay.classList.add('is-open');
