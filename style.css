@@ -110,9 +110,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
+  gap: 6px;
   width: 100%;
-  padding: 18px 16px;
+  padding: 9px 8px;
   background: var(--cream-light);
   border-bottom: 1px solid var(--line);
 }
@@ -120,9 +120,9 @@ body {
 .social-btn {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 30px;
-  font-size: 1.8rem;
+  gap: 6px;
+  padding: 6px 15px;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--ink);
   text-decoration: none;
@@ -134,8 +134,8 @@ body {
 }
 
 .social-dot {
-  width: 15px;
-  height: 15px;
+  width: 7.5px;
+  height: 7.5px;
   border-radius: 50%;
   background: var(--moss);
   transition: background 0.2s ease;
