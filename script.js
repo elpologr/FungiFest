@@ -34,16 +34,15 @@ const SHEET_NAME = 'Hoja 1';
 const OMITIR_ENCABEZADO = true;
 
 // Índices de columna (A=0, B=1, C=2 ...). Ajusta si tu hoja usa otro orden.
-// Nota: por ahora tu hoja "FungiFest" solo tiene A="Nombre" y B="Tipo" con
-// datos; C-F están listas para cuando agregues Resumen, Contenido, Imagen
-// y Enlace — mientras tanto las tarjetas se ven bien mostrando solo el título.
+// Tu hoja "FungiFest" tiene: A="Nombre", B="Tipo", C="imgbb" (link de imagen).
+// D-F quedan listas para cuando agregues Resumen, Contenido y Enlace.
 const COLUMNAS = {
-  TITULO: 0,      // A
-  TIPO: 1,        // B — debe decir "Proyecto" o "Publicación"
-  RESUMEN: 2,      // C
-  CONTENIDO: 3,    // D
-  IMAGEN: 4,       // E
-  ENLACE: 5        // F
+  TITULO: 0,       // A
+  TIPO: 1,         // B — debe decir "Proyecto" o "Publicación"
+  IMAGEN: 2,        // C — link de imgbb
+  RESUMEN: 3,       // D
+  CONTENIDO: 4,     // E
+  ENLACE: 5         // F
 };
 
 function normalizarTexto(texto) {
@@ -218,16 +217,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Tarjetas dinámicas de Proyectos y Publicaciones ---
   cargarContenidoDinamico();
 
-  // --- Navegación con desplazamiento suave ---
+  // --- Navegación: solo muestra la sección del botón presionado ---
   const navButtons = document.querySelectorAll('.nav-btn');
+  const allSections = document.querySelectorAll('.content-section');
 
   navButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
       const targetId = btn.getAttribute('data-target');
       const target = document.getElementById(targetId);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (!target) return;
+
+      allSections.forEach((seccion) => seccion.classList.remove('is-active'));
+      target.classList.add('is-active');
+
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 
