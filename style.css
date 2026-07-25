@@ -192,6 +192,7 @@ body {
 /* Perfil */
 
 .profile-wrap {
+  position: relative;
   margin: 18px 0 28px;
 }
 
@@ -206,6 +207,47 @@ body {
   outline-offset: 4px;
   box-shadow: 0 10px 26px rgba(36, 28, 19, 0.18);
   background: var(--cream-light);
+}
+
+.profile-img.is-broken {
+  display: none;
+}
+
+.profile-fallback {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: clamp(112px, 18vw, 168px);
+  height: clamp(112px, 18vw, 168px);
+  margin: 0 auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--moss) 0%, #3a4229 60%, var(--ink) 100%);
+  border: 4px solid var(--cream-light);
+  outline: 2px solid var(--line);
+  outline-offset: 4px;
+  box-shadow: 0 10px 26px rgba(36, 28, 19, 0.18);
+  color: var(--cream-light);
+  font-family: var(--font-display);
+  text-align: center;
+  padding: 10px;
+}
+
+.profile-fallback span {
+  font-size: 0.72rem;
+  line-height: 1.3;
+}
+
+.profile-fallback small {
+  font-family: var(--font-body);
+  opacity: 0.65;
+  font-size: 0.6rem;
+  letter-spacing: 0.03em;
+}
+
+.profile-wrap.show-fallback .profile-fallback {
+  display: flex;
 }
 
 /* Navegación / botones */

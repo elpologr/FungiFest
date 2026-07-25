@@ -62,13 +62,17 @@
     </svg>
 
     <!-- Espacio para la imagen de perfil -->
-    <div class="profile-wrap">
+    <div class="profile-wrap" id="profile-wrap">
       <img
         src="imagenes/perfil.webp"
         alt="Imagen de perfil de FungiFest Morelia"
         class="profile-img"
         id="profile-img"
       >
+      <div class="profile-fallback" id="profile-fallback" aria-hidden="true">
+        <span>Coloca aquí tu imagen de perfil</span>
+        <small>imagenes/perfil.webp</small>
+      </div>
     </div>
 
     <!-- Botones de navegación -->
@@ -106,7 +110,7 @@
       </div>
     </section>
 
-    <section id="proyectos" class="content-section">
+    <section id="proyectos" class="content-section is-active">
       <h2>Proyectos</h2>
       <!-- Tarjetas generadas dinámicamente desde Google Sheets: filas de 3 -->
       <div id="proyectos-grid" class="cards-grid">

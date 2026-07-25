@@ -306,11 +306,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Respaldo simple si falta la imagen de perfil ---
+  // --- Respaldo visual si aún no se coloca la imagen de perfil ---
   const profileImg = document.getElementById('profile-img');
-  if (profileImg) {
+  const profileWrap = profileImg ? profileImg.closest('.profile-wrap') : null;
+
+  if (profileImg && profileWrap) {
     profileImg.addEventListener('error', () => {
-      profileImg.style.display = 'none';
+      profileImg.classList.add('is-broken');
+      profileWrap.classList.add('show-fallback');
     });
   }
 
