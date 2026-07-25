@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FungiFest Morelia</title>
+  <meta name="description" content="FungiFest Morelia: comunidad, proyectos y publicaciones sobre el mundo fúngico en Morelia, Michoacán.">
+
+  <!-- Tipografías: Fraunces (display, con carácter orgánico) + Work Sans (texto/UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+
+    <!-- Espacio para la imagen tipo banner -->
+    <div class="banner">
+      <img
+        src="images/banner.jpg"
+        alt="Banner FungiFest Morelia"
+        id="banner-img"
+      >
+      <div class="banner-fallback" id="banner-fallback">
+        <span>Coloca aquí tu imagen de banner</span>
+        <small>images/banner.jpg</small>
+      </div>
+      <div class="spore-field" aria-hidden="true"></div>
+    </div>
+
+    <!-- Nombre de la página -->
+    <h1 class="site-title">FungiFest <span class="accent">Morelia</span></h1>
+
+    <!-- Hilo de micelio decorativo -->
+    <svg class="mycelium" viewBox="0 0 300 60" aria-hidden="true" preserveAspectRatio="none">
+      <path class="mycelium-path" d="M10,30 C 60,10 90,50 150,30 C 210,10 240,50 290,30" />
+      <circle class="spore" cx="60" cy="16" r="2.4" />
+      <circle class="spore" cx="150" cy="30" r="2.8" />
+      <circle class="spore" cx="235" cy="16" r="2.2" />
+    </svg>
+
+    <!-- Espacio para la imagen de perfil -->
+    <div class="profile-wrap">
+      <img
+        src="images/perfil.webp"
+        alt="Imagen de perfil de FungiFest Morelia"
+        class="profile-img"
+        id="profile-img"
+      >
+    </div>
+
+    <!-- Botones de navegación -->
+    <nav class="main-nav" aria-label="Navegación principal">
+      <button class="nav-btn" data-target="conocenos" type="button">
+        <span class="nav-btn-index">01</span> Conócenos
+      </button>
+      <button class="nav-btn" data-target="proyectos" type="button">
+        <span class="nav-btn-index">02</span> Proyectos
+      </button>
+      <button class="nav-btn" data-target="publicaciones" type="button">
+        <span class="nav-btn-index">03</span> Publicaciones
+      </button>
+    </nav>
+
+  </header>
+
+  <main>
+    <section id="conocenos" class="content-section">
+      <h2>Conócenos</h2>
+      <p>Próximamente: la historia y misión de FungiFest Morelia.</p>
+    </section>
+
+    <section id="proyectos" class="content-section">
+      <h2>Proyectos</h2>
+      <p>Próximamente: los proyectos en los que estamos trabajando.</p>
+    </section>
+
+    <section id="publicaciones" class="content-section">
+      <h2>Publicaciones</h2>
+      <p>Próximamente: artículos, notas y hallazgos del equipo.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>FungiFest Morelia &middot; fungifestmorelia.com</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
