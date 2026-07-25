@@ -20,13 +20,13 @@
     <!-- Espacio para la imagen tipo banner -->
     <div class="banner">
       <img
-        src="images/banner.webp"
+        src="imagenes/banner.webp"
         alt="Banner FungiFest Morelia"
         id="banner-img"
       >
       <div class="banner-fallback" id="banner-fallback">
         <span>Coloca aquí tu imagen de banner</span>
-        <small>images/banner.webp</small>
+        <small>imagenes/banner.webp</small>
       </div>
       <div class="spore-field" aria-hidden="true"></div>
     </div>
@@ -45,6 +45,9 @@
       <a class="social-btn" href="mailto:fungifest.morelia2024@outlook.com">
         <span class="social-dot" aria-hidden="true"></span> Contacto
       </a>
+      <button class="social-btn" id="share-open-btn" type="button">
+        <span class="social-dot" aria-hidden="true"></span> Compartir
+      </button>
     </div>
 
     <!-- Nombre de la página -->
@@ -61,7 +64,7 @@
     <!-- Espacio para la imagen de perfil -->
     <div class="profile-wrap">
       <img
-        src="images/perfil.webp"
+        src="imagenes/perfil.webp"
         alt="Imagen de perfil de FungiFest Morelia"
         class="profile-img"
         id="profile-img"
@@ -123,6 +126,24 @@
   <!-- Modal / submenú con la información de cada tarjeta -->
   <div class="modal-overlay" id="modal-overlay">
     <div class="modal-box" id="modal-box" role="dialog" aria-modal="true"></div>
+  </div>
+
+  <!-- Submenú para compartir la página (link + código QR) -->
+  <div class="modal-overlay" id="share-overlay">
+    <div class="modal-box share-box" id="share-box" role="dialog" aria-modal="true">
+      <button class="modal-close" id="share-close" aria-label="Cerrar" type="button">&times;</button>
+      <h3>Comparte FungiFest Morelia</h3>
+      <img
+        class="share-qr"
+        src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Felpologr.github.io%2FFungiFest%2F"
+        alt="Código QR de fungifestmorelia.com"
+      >
+      <div class="share-link-row">
+        <input type="text" class="share-link-input" id="share-link-input" value="https://elpologr.github.io/FungiFest/" readonly>
+        <button class="share-copy-btn" id="share-copy-btn" type="button">Copiar</button>
+      </div>
+      <p class="share-copied" id="share-copied" aria-live="polite"></p>
+    </div>
   </div>
 
   <footer class="site-footer">

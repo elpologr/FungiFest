@@ -149,6 +149,10 @@ function crearTarjetaPublicacion(item) {
 
 let modalOverlay;
 let modalBox;
+let shareOverlay;
+let shareCopyBtn;
+let shareLinkInput;
+let shareCopied;
 
 function abrirModal(item) {
   modalBox.innerHTML = `
@@ -167,6 +171,34 @@ function abrirModal(item) {
 function cerrarModal() {
   modalOverlay.classList.remove('is-open');
   document.body.classList.remove('modal-open');
+}
+
+function abrirShare() {
+  shareOverlay.classList.add('is-open');
+  document.body.classList.add('modal-open');
+}
+
+function cerrarShare() {
+  shareOverlay.classList.remove('is-open');
+  document.body.classList.remove('modal-open');
+}
+
+async function copiarLinkPagina() {
+  const enlace = shareLinkInput.value;
+
+  try {
+    await navigator.clipboard.writeText(enlace);
+  } catch (error) {
+    // Respaldo para navegadores sin soporte de Clipboard API
+    shareLinkInput.select();
+    shareLinkInput.setSelectionRange(0, enlace.length);
+    document.execCommand('copy');
+  }
+
+  shareCopied.textContent = '¡Enlace copiado!';
+  setTimeout(() => {
+    shareCopied.textContent = '';
+  }, 2000);
 }
 
 async function cargarContenidoDinamico() {
@@ -210,8 +242,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Submenú de Compartir (link + QR) ---
+  shareOverlay = document.getElementById('share-overlay');
+  shareCopyBtn = document.getElementById('share-copy-btn');
+  shareLinkInput = document.getElementById('share-link-input');
+  shareCopied = document.getElementById('share-copied');
+  const shareOpenBtn = document.getElementById('share-open-btn');
+  const shareCloseBtn = document.getElementById('share-close');
+
+  if (shareOpenBtn) {
+    shareOpenBtn.addEventListener('click', abrirShare);
+  }
+
+  if (shareCloseBtn) {
+    shareCloseBtn.addEventListener('click', cerrarShare);
+  }
+
+  if (shareOverlay) {
+    shareOverlay.addEventListener('click', (evento) => {
+      if (evento.target === shareOverlay) cerrarShare();
+    });
+  }
+
+  if (shareCopyBtn) {
+    shareCopyBtn.addEventListener('click', copiarLinkPagina);
+  }
+
   document.addEventListener('keydown', (evento) => {
-    if (evento.key === 'Escape') cerrarModal();
+    if (evento.key === 'Escape') {
+      cerrarModal();
+      cerrarShare();
+    }
   });
 
   // --- Tarjetas dinámicas de Proyectos y Publicaciones ---
